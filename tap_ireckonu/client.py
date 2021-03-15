@@ -1,37 +1,348 @@
 import json
 import requests
 
-# Build the Data Resource Service Here as a class with each endpoint as a function.
-# Do not iterate over paginated endpoints in this file.  Below are just samples
 
-class RESOURCENAMEClient:
-    BASE_URL = BASE_API_URL
+class IreckonuClient:
+    BASE_URL = "https://mint-mw-acc.ireckonu.com"
+    BULK_API = "bapi/v1"
+    COMPANY_ENPOINT = "company"
+    FOLIO_ENDPOINT = "folio"
+    HOUSE_ACCOUNT_ENDPOINT = "houseaccount"
+    PERSON_ENDPOINT = "person"
+    RESERVATION_ENDPOINT = "reservation"
 
-    def __init__(self, CLIENT_PARAMETERS):
+    def __init__(self, client_id, client_secret):
         self._client = requests.Session()
-
+        self._client.headers.update(
+            {"Content-Type": "application/json", "Accept": "application/json"}
+        )
 
     def fetch_access_token(self, client_id, api_key):
-        url = f'{self.BASE_URL}/config/api/gettokens'
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-        payload_dict = {
-            'client_id': client_id,
-            'apikey': api_key
-        }
-        return self._client.post(url, headers=headers, data=payload_dict).json()['access_token']
+        pass
 
-    def fetch_ENDPOINT_1(self):
-        url = f'{self.BASE_URL}/ADDITIONAL_URI_ADDRESS'
-        param_payload = {
-            'active': 'true',
-            'pagesize': NUMBER,  # Max per page count
-            'page': NUMBER  # Page will have to be iterated over in a range
+    def fetch_created_bulk_company(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.COMPANY_ENPOINT}"
+        payload = {
+            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Filters": self.COMPANY_FILTERS,
         }
-        return self._client.get(url, params=param_payload).json()
+        return self._client.post(url, data=payload).json()
 
-    def fetch_ENDPOINT_2(self):
-        url = f'{self.BASE_URL}/ADDITIONAL_URI_ADDRESS'
-        return self._client.get(url).json()
+    def fetch_updated_bulk_company(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.COMPANY_ENPOINT}"
+        payload = {
+            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Filters": self.COMPANY_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
 
+    def fetch_created_bulk_folio(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.FOLIO_ENDPOINT}"
+        payload = {
+            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Filters": self.FOLIO_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_updated_bulk_folio(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.FOLIO_ENDPOINT}"
+        payload = {
+            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Filters": self.FOLIO_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_created_bulk_house_account(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.HOUSE_ACCOUNT_ENDPOINT}"
+        payload = {
+            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Filters": self.HOUSE_ACCOUNT_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_updated_bulk_house_account(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.HOUSE_ACCOUNT_ENDPOINT}"
+        payload = {
+            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Filters": self.HOUSE_ACCOUNT_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_created_bulk_person(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
+        payload = {
+            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Filters": self.PERSON_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_updated_bulk_person(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
+        payload = {
+            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Filters": self.PERSON_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_created_bulk_reservation(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
+        payload = {
+            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Filters": self.RESERVATION_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    def fetch_updated_bulk_reservation(
+        self, start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.RESERVATION_ENDPOINT}"
+        payload = {
+            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Filters": self.RESERVATION_FILTERS,
+        }
+        return self._client.post(url, data=payload).json()
+
+    @staticmethod
+    def _created_criteria(
+        start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        return {
+            "Start": start_date,
+            "End": end_date,
+            "Type": "Created",
+            "Take": page_size,
+            "Skip": page * page_size,
+        }
+
+    @staticmethod
+    def _updated_criteria(
+        start_date: str, end_date: str, page: int, page_size: int
+    ) -> dict:
+        return {
+            "Start": start_date,
+            "End": end_date,
+            "Type": "Updated",
+            "Take": page_size,
+            "Skip": page * page_size,
+        }
+
+    COMPANY_FILTERS = {
+        "IncludeExternalReferences": True,
+        "IncludeAddresses": True,
+        "IncludePhoneNumbers": True,
+        "IncludeEmailAddresses": True,
+    }
+
+    FOLIO_FILTERS = {"IncludeInvoiceLines": True, "IncludeAddress": True}
+
+    HOUSE_ACCOUNT_FILTERS = {
+        "IncludeExternalReferences": True,
+        "IncludePrimaryPerson": True,
+        "PrimaryPerson": {
+            "IncludeEmailAddresses": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeAttributes": True,
+            "IncludeDataConsents": True,
+            "IncludePaymentMethods": True,
+            "IncludeStaySummaries": True,
+            "IncludeDocuments": True,
+            "IncludeGlobalStay": True,
+            "IncludeExternalReferences": True,
+            "IncludeLoyaltyLevels": True,
+            "IncludePreferences": True,
+            "IncludeCompany": True,
+            "Company": {
+                "IncludeExternalReferences": True,
+                "IncludeAddresses": True,
+                "IncludePhoneNumbers": True,
+                "IncludeEmailAddresses": True,
+            },
+        },
+        "IncludeContactPerson": True,
+        "ContactPerson": {
+            "IncludeEmailAddresses": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeAttributes": True,
+            "IncludeDataConsents": True,
+            "IncludePaymentMethods": True,
+            "IncludeStaySummaries": True,
+            "IncludeDocuments": True,
+            "IncludeGlobalStay": True,
+            "IncludeExternalReferences": True,
+            "IncludeLoyaltyLevels": True,
+            "IncludePreferences": True,
+            "IncludeCompany": True,
+            "Company": {
+                "IncludeExternalReferences": True,
+                "IncludeAddresses": True,
+                "IncludePhoneNumbers": True,
+                "IncludeEmailAddresses": True,
+            },
+        },
+        "IncludeCompany": True,
+        "Company": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+        "IncludeAgency": True,
+        "Agency": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+        "IncludeSourceCompany": True,
+        "SourceCompany": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+    }
+
+    PERSON_FILTERS = {
+        "IncludeEmailAddresses": True,
+        "IncludeAddresses": True,
+        "IncludePhoneNumbers": True,
+        "IncludeAttributes": True,
+        "IncludeDataConsents": True,
+        "IncludePaymentMethods": True,
+        "IncludeStaySummaries": True,
+        "IncludeDocuments": True,
+        "IncludeGlobalStay": True,
+        "IncludeExternalReferences": True,
+        "IncludeLoyaltyLevels": True,
+        "IncludePreferences": True,
+        "IncludeCompany": True,
+        "Company": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+    }
+
+    RESERVATION_FILTERS = {
+        "IncludeBooker": True,
+        "Booker": {
+            "IncludeEmailAddresses": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeAttributes": True,
+            "IncludeDataConsents": True,
+            "IncludePaymentMethods": True,
+            "IncludeStaySummaries": True,
+            "IncludeDocuments": True,
+            "IncludeGlobalStay": True,
+            "IncludeExternalReferences": True,
+            "IncludeLoyaltyLevels": True,
+            "IncludePreferences": True,
+            "IncludeCompany": True,
+            "Company": {
+                "IncludeExternalReferences": True,
+                "IncludeAddresses": True,
+                "IncludePhoneNumbers": True,
+                "IncludeEmailAddresses": True,
+            },
+        },
+        "IncludePrimaryGuest": True,
+        "PrimaryGuest": {
+            "IncludeEmailAddresses": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeAttributes": True,
+            "IncludeDataConsents": True,
+            "IncludePaymentMethods": True,
+            "IncludeStaySummaries": True,
+            "IncludeDocuments": True,
+            "IncludeGlobalStay": True,
+            "IncludeExternalReferences": True,
+            "IncludeLoyaltyLevels": True,
+            "IncludePreferences": True,
+            "IncludeCompany": True,
+            "Company": {
+                "IncludeExternalReferences": True,
+                "IncludeAddresses": True,
+                "IncludePhoneNumbers": True,
+                "IncludeEmailAddresses": True,
+            },
+        },
+        "IncludeOtherLinkedPersons": True,
+        "OtherLinkedPersons": {
+            "IncludeEmailAddresses": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeAttributes": True,
+            "IncludeDataConsents": True,
+            "IncludePaymentMethods": True,
+            "IncludeStaySummaries": True,
+            "IncludeDocuments": True,
+            "IncludeGlobalStay": True,
+            "IncludeExternalReferences": True,
+            "IncludeLoyaltyLevels": True,
+            "IncludePreferences": True,
+            "IncludeCompany": True,
+            "Company": {
+                "IncludeExternalReferences": True,
+                "IncludeAddresses": True,
+                "IncludePhoneNumbers": True,
+                "IncludeEmailAddresses": True,
+            },
+        },
+        "IncludeContacts": True,
+        "IncludeRatePlan": True,
+        "IncludeExtraServices": True,
+        "IncludeExternalReferences": True,
+        "IncludePaymentInformations": True,
+        "IncludePaymentMethods": True,
+        "IncludeCompany": True,
+        "IncludeAttributes": True,
+        "IncludePreferences": True,
+        "Company": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+        "IncludeAgency": True,
+        "Agency": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+        "IncludeSourceCompany": True,
+        "SourceCompany": {
+            "IncludeExternalReferences": True,
+            "IncludeAddresses": True,
+            "IncludePhoneNumbers": True,
+            "IncludeEmailAddresses": True,
+        },
+        "Extension": {
+            "IncludeRateplans": True,
+            "IncludeExtras": True,
+            "IncludeUnitTypes": True,
+        },
+    }
