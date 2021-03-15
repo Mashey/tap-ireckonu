@@ -4,7 +4,7 @@ from tap_ireckonu.discovery import discover
 from tap_ireckonu.sync import sync
 
 # Fill in any required config keys from the config.json here
-REQUIRED_CONFIG_KEYS = [...]
+REQUIRED_CONFIG_KEYS = []
 
 LOGGER = singer.get_logger()
 
