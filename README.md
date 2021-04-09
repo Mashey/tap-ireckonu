@@ -39,6 +39,14 @@ These are stored in the `config.json` file.
 ```
 If these keys are missing the tap will fail at run time with a warning of missing required keys.
 
+### Usage
+
+```
+python3 -m tap_ireckonu.__init__ -c config.json -s state.json --catalog catalog.json > example.json
+```
+
+The above command, when run from a virtual environment with the poetry packages installed, will run the tap.  The tap will cycle through the endpoints starting with a beginning date of 2020-10-30 until the current date.  In production, subsequent runs will resume from the last date ran.  In dev - this feature isn't setup due to state and bookmarking being handled by a SQL Database.
+
 # Streams
 
 Streams are iterative endpoint calls that loop through paginated endpoints and the records they return, converting them to JSON strings that match the schema of the data returned.  
