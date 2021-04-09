@@ -1,0 +1,1833 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": ["null", "integer"]
+    },
+    "CompanyCode": {
+      "type": ["null", "string"]
+    },
+    "MarketCode": {
+      "type": ["null", "string"]
+    },
+    "Name": {
+      "type": ["null", "string"]
+    },
+    "Comments": {
+      "type": ["null", "string"]
+    },
+    "SourceCode": {
+      "type": ["null", "string"]
+    },
+    "VirtualRoomCode": {
+      "type": ["null", "string"]
+    },
+    "HotelCode": {
+      "type": ["null", "string"]
+    },
+    "ExternalReferences": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "SystemCode": {
+            "type": ["null", "string"]
+          }
+        }
+      }
+    },
+    "ContactPerson": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": ["null", "integer"]
+        },
+        "Title": {
+          "type": ["null", "string"]
+        },
+        "Names": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Title": {
+                "type": ["null", "string"]
+              },
+              "FirstName": {
+                "type": ["null", "string"]
+              },
+              "LastName": {
+                "type": ["null", "string"]
+              },
+              "Primary": { "type": "boolean" }
+            }
+          }
+        },
+        "EmailAddresses": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "Verified": { "type": "boolean" },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "LanguageCode": {
+          "type": ["null", "string"]
+        },
+        "CountryCode": {
+          "type": ["null", "string"]
+        },
+        "Gender": {
+          "type": ["null", "string"]
+        },
+        "DateOfBirth": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "HotelCode": {
+          "type": ["null", "string"]
+        },
+        "Source": {
+          "type": ["null", "string"]
+        },
+        "JobTitle": {
+          "type": ["null", "string"]
+        },
+        "IsMember": { "type": "boolean" },
+        "NewsletterSubscription": { "type": "boolean" },
+        "Company": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Name": {
+                "type": ["null", "string"]
+              },
+              "EmailAddress": {
+                "type": ["null", "string"]
+              },
+              "Comments": {
+                "type": ["null", "string"]
+              },
+              "VatNumber": {
+                "type": ["null", "string"]
+              },
+              "HotelCode": {
+                "type": ["null", "string"]
+              },
+              "Fax": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "Addresses": {
+                "type": ["null", "array"],
+                "items": {
+                  "type": ["object", "null"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "Id": {
+                      "type": ["null", "integer"]
+                    },
+                    "City": {
+                      "type": ["null", "string"]
+                    },
+                    "HouseNumber": {
+                      "type": ["null", "string"]
+                    },
+                    "State": {
+                      "type": ["null", "string"]
+                    },
+                    "Street": {
+                      "type": ["null", "string"]
+                    },
+                    "ZipCode": {
+                      "type": ["null", "string"]
+                    },
+                    "CountryCode": {
+                      "type": ["null", "string"]
+                    },
+                    "LanguageCode": {
+                      "type": ["null", "string"]
+                    },
+                    "Source": {
+                      "type": ["null", "string"]
+                    },
+                    "Type": {
+                      "type": ["null", "string"]
+                    },
+                    "IsPrimary": { "type": "boolean" },
+                    "CreatedDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    },
+                    "LastUpdateDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    }
+                  }
+                }
+              },
+              "PhoneNumbers": {
+                "type": ["null", "array"],
+                "items": {
+                  "type": ["object", "null"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "Id": {
+                      "type": ["null", "integer"]
+                    },
+                    "CountryAccessCode": {
+                      "type": ["null", "string"]
+                    },
+                    "Number": {
+                      "type": ["null", "string"]
+                    },
+                    "IsPrimary": { "type": "boolean" },
+                    "Source": {
+                      "type": ["null", "string"]
+                    },
+                    "Type": {
+                      "type": ["null", "string"]
+                    },
+                    "CreatedDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    },
+                    "LastUpdateDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    }
+                  }
+                }
+              },
+              "ExternalReferences": {
+                "type": ["null", "array"],
+                "items": {
+                  "type": ["object", "null"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "Code": {
+                      "type": ["null", "string"]
+                    },
+                    "TypeCode": {
+                      "type": ["null", "string"]
+                    },
+                    "SystemCode": {
+                      "type": ["null", "string"]
+                    }
+                  }
+                }
+              },
+              "Attributes": {
+                "type": ["null", "array"],
+                "items": {
+                  "type": ["object", "null"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "Id": {
+                      "type": ["null", "integer"]
+                    },
+                    "Code": {
+                      "type": ["null", "string"]
+                    },
+                    "Value": {
+                      "type": ["null", "string"]
+                    },
+                    "TypeCode": {
+                      "type": ["null", "string"]
+                    },
+                    "StartDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    },
+                    "EndDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    },
+                    "CreateDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    },
+                    "LastUpdateDateTime": {
+                      "type": ["null", "string"],
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CompanyName": {
+          "type": ["null", "string"]
+        },
+        "ExternalReferences": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "SystemCode": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "Attributes": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "StartDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EndDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "Addresses": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "City": {
+                "type": ["null", "string"]
+              },
+              "HouseNumber": {
+                "type": ["null", "string"]
+              },
+              "State": {
+                "type": ["null", "string"]
+              },
+              "Street": {
+                "type": ["null", "string"]
+              },
+              "ZipCode": {
+                "type": ["null", "string"]
+              },
+              "CountryCode": {
+                "type": ["null", "string"]
+              },
+              "LanguageCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "PhoneNumbers": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "CountryAccessCode": {
+                "type": ["null", "string"]
+              },
+              "Number": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "DataConsents": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Message": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "SubSource": {
+                "type": ["null", "string"]
+              },
+              "Given": { "type": "boolean" },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "ValidUntil": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "PaymentMethods": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Name": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "SubTypeCode": {
+                "type": ["null", "string"]
+              },
+              "PaymentIntegrationCode": {
+                "type": ["null", "string"]
+              },
+              "PaymentIntegrationMerchantCode": {
+                "type": ["null", "string"]
+              },
+              "ExpiryDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "Preferences": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "PersonId": {
+                "type": ["null", "integer"]
+              },
+              "ReservationId": {
+                "type": ["null", "integer"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "HotelCode": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "LoyaltyLevels": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "LevelCode": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "Rank": {
+                "type": ["null", "integer"]
+              },
+              "ValidFrom": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "ValidUntil": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "StaySummaries": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "CurrencyCode": {
+                "type": ["null", "string"]
+              },
+              "HotelCode": {
+                "type": ["null", "string"]
+              },
+              "LastStayDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "NumberOfNights": {
+                "type": ["null", "integer"]
+              },
+              "NumberOfStays": {
+                "type": ["null", "integer"]
+              },
+              "StayTotalRevenue": {
+                "type": ["null", "integer"]
+              },
+              "StayTotalRevenueEnterprise": {
+                "type": ["null", "integer"]
+              },
+              "LastStayUnit": {
+                "type": ["null", "string"]
+              },
+              "LastStayRevenue": {
+                "type": ["null", "integer"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "Documents": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "PersonId": {
+                "type": ["null", "integer"]
+              },
+              "HotelCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Number": {
+                "type": ["null", "string"]
+              },
+              "Nationality": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "IssueCity": {
+                "type": ["null", "string"]
+              },
+              "IssueCountry": {
+                "type": ["null", "string"]
+              },
+              "PlaceOfBirth": {
+                "type": ["null", "string"]
+              },
+              "ExpiryDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "IssueDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "IsPrimary": { "type": "boolean" },
+              "LastChangedBySystem": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "GlobalStays": {
+          "type": ["null", "object"],
+          "additionalProperties": false,
+          "properties": {
+            "CurrencyCode": {
+              "type": ["null", "string"]
+            },
+            "LastStayDate": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "NumberOfNights": {
+              "type": ["null", "integer"]
+            },
+            "NumberOfStays": {
+              "type": ["null", "integer"]
+            },
+            "StayTotalRevenue": {
+              "type": ["null", "integer"]
+            },
+            "LastStayUnit": {
+              "type": ["null", "string"]
+            },
+            "LastStayHotelCode": {
+              "type": ["null", "string"]
+            },
+            "HotelDiversity": {
+              "type": ["null", "integer"]
+            }
+          }
+        },
+        "LastChangedBySystem": {
+          "type": ["null", "string"]
+        },
+        "CreatedDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastUpdateDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        }
+      }
+    },
+    "PrimaryPerson": {
+      "Id": {
+        "type": ["null", "integer"]
+      },
+      "Title": {
+        "type": ["null", "string"]
+      },
+      "Names": [
+        {
+          "Title": {
+            "type": ["null", "string"]
+          },
+          "FirstName": {
+            "type": ["null", "string"]
+          },
+          "LastName": {
+            "type": ["null", "string"]
+          },
+          "Primary": { "type": "boolean" }
+        }
+      ],
+      "EmailAddresses": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "Value": {
+            "type": ["null", "string"]
+          },
+          "Verified": { "type": "boolean" },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "LanguageCode": {
+        "type": ["null", "string"]
+      },
+      "CountryCode": {
+        "type": ["null", "string"]
+      },
+      "Gender": {
+        "type": ["null", "string"]
+      },
+      "DateOfBirth": {
+        "type": ["null", "string"],
+        "format": "date-time"
+      },
+      "HotelCode": {
+        "type": ["null", "string"]
+      },
+      "Source": {
+        "type": ["null", "string"]
+      },
+      "JobTitle": {
+        "type": ["null", "string"]
+      },
+      "IsMember": { "type": "boolean" },
+      "NewsletterSubscription": { "type": "boolean" },
+      "Company": {
+        "Id": {
+          "type": ["null", "integer"]
+        },
+        "Name": {
+          "type": ["null", "string"]
+        },
+        "EmailAddress": {
+          "type": ["null", "string"]
+        },
+        "Comments": {
+          "type": ["null", "string"]
+        },
+        "VatNumber": {
+          "type": ["null", "string"]
+        },
+        "HotelCode": {
+          "type": ["null", "string"]
+        },
+        "Fax": {
+          "type": ["null", "string"]
+        },
+        "CreatedDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastUpdateDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "Addresses": [
+          {
+            "Id": {
+              "type": ["null", "integer"]
+            },
+            "City": {
+              "type": ["null", "string"]
+            },
+            "HouseNumber": {
+              "type": ["null", "string"]
+            },
+            "State": {
+              "type": ["null", "string"]
+            },
+            "Street": {
+              "type": ["null", "string"]
+            },
+            "ZipCode": {
+              "type": ["null", "string"]
+            },
+            "CountryCode": {
+              "type": ["null", "string"]
+            },
+            "LanguageCode": {
+              "type": ["null", "string"]
+            },
+            "Source": {
+              "type": ["null", "string"]
+            },
+            "Type": {
+              "type": ["null", "string"]
+            },
+            "IsPrimary": { "type": "boolean" },
+            "CreatedDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "LastUpdateDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            }
+          }
+        ],
+        "PhoneNumbers": [
+          {
+            "Id": {
+              "type": ["null", "integer"]
+            },
+            "CountryAccessCode": {
+              "type": ["null", "string"]
+            },
+            "Number": {
+              "type": ["null", "string"]
+            },
+            "IsPrimary": { "type": "boolean" },
+            "Source": {
+              "type": ["null", "string"]
+            },
+            "Type": {
+              "type": ["null", "string"]
+            },
+            "CreatedDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "LastUpdateDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            }
+          }
+        ],
+        "ExternalReferences": [
+          {
+            "Code": {
+              "type": ["null", "string"]
+            },
+            "TypeCode": {
+              "type": ["null", "string"]
+            },
+            "SystemCode": {
+              "type": ["null", "string"]
+            }
+          }
+        ],
+        "Attribues": [
+          {
+            "Id": {
+              "type": ["null", "integer"]
+            },
+            "Code": {
+              "type": ["null", "string"]
+            },
+            "Value": {
+              "type": ["null", "string"]
+            },
+            "TypeCode": {
+              "type": ["null", "string"]
+            },
+            "StartDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "EndDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "CreateDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            },
+            "LastUpdateDateTime": {
+              "type": ["null", "string"],
+              "format": "date-time"
+            }
+          }
+        ]
+      },
+      "CompanyName": {
+        "type": ["null", "string"]
+      },
+      "ExternalReferences": [
+        {
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "SystemCode": {
+            "type": ["null", "string"]
+          }
+        }
+      ],
+      "Attributes": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "Value": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "HotelCode": {
+            "type": ["null", "string"]
+          },
+          "StartDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "EndDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "Addresses": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "City": {
+            "type": ["null", "string"]
+          },
+          "HouseNumber": {
+            "type": ["null", "string"]
+          },
+          "State": {
+            "type": ["null", "string"]
+          },
+          "Street": {
+            "type": ["null", "string"]
+          },
+          "ZipCode": {
+            "type": ["null", "string"]
+          },
+          "CountryCode": {
+            "type": ["null", "string"]
+          },
+          "LanguageCode": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "PhoneNumbers": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "CountryAccessCode": {
+            "type": ["null", "string"]
+          },
+          "Number": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "DataConsents": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "Message": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "SubSource": {
+            "type": ["null", "string"]
+          },
+          "Given": { "type": "boolean" },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "ValidUntil": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "PaymentMethods": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "Name": {
+            "type": ["null", "string"]
+          },
+          "Value": {
+            "type": ["null", "string"]
+          },
+          "SubTypeCode": {
+            "type": ["null", "string"]
+          },
+          "PaymentIntegrationCode": {
+            "type": ["null", "string"]
+          },
+          "PaymentIntegrationMerchantCode": {
+            "type": ["null", "string"]
+          },
+          "ExpiryDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "Preferences": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "PersonId": 0,
+          "ReservationId": 0,
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "Value": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "HotelCode": {
+            "type": ["null", "string"]
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "LoyaltyLevels": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "LevelCode": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "Rank": 0,
+          "ValidFrom": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "ValidUntil": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "StaySummaries": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "CurrencyCode": {
+            "type": ["null", "string"]
+          },
+          "HotelCode": {
+            "type": ["null", "string"]
+          },
+          "LastStayDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "NumberOfNights": 0,
+          "NumberOfStays": 0,
+          "StayTotalRevenue": 0,
+          "StayTotalRevenueEnterprise": 0,
+          "LastStayUnit": {
+            "type": ["null", "string"]
+          },
+          "LastStayRevenue": 0,
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "Documents": [
+        {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "PersonId": 0,
+          "HotelCode": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Number": {
+            "type": ["null", "string"]
+          },
+          "Nationality": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "IssueCity": {
+            "type": ["null", "string"]
+          },
+          "IssueCountry": {
+            "type": ["null", "string"]
+          },
+          "PlaceOfBirth": {
+            "type": ["null", "string"]
+          },
+          "ExpiryDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "IssueDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "IsPrimary": { "type": "boolean" },
+          "LastChangedBySystem": {
+            "type": ["null", "string"]
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      ],
+      "GlobalStay": {
+        "CurrencyCode": {
+          "type": ["null", "string"]
+        },
+        "LastStayDate": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "NumberOfNights": 0,
+        "NumberOfStays": 0,
+        "StayTotalRevenue": 0,
+        "LastStayUnit": {
+          "type": ["null", "string"]
+        },
+        "LastStayHotelCode": {
+          "type": ["null", "string"]
+        },
+        "HotelDiversity": 0
+      },
+      "LastChangedBySystem": {
+        "type": ["null", "string"]
+      },
+      "CreatedDateTime": {
+        "type": ["null", "string"],
+        "format": "date-time"
+      },
+      "LastUpdateDateTime": {
+        "type": ["null", "string"],
+        "format": "date-time"
+      }
+    },
+    "Agency": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": ["null", "integer"]
+        },
+        "Name": {
+          "type": ["null", "string"]
+        },
+        "EmailAddress": {
+          "type": ["null", "string"]
+        },
+        "Comments": {
+          "type": ["null", "string"]
+        },
+        "VatNumber": {
+          "type": ["null", "string"]
+        },
+        "HotelCode": {
+          "type": ["null", "string"]
+        },
+        "Fax": {
+          "type": ["null", "string"]
+        },
+        "CreatedDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastUpdateDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "Addresses": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "City": {
+                "type": ["null", "string"]
+              },
+              "HouseNumber": {
+                "type": ["null", "string"]
+              },
+              "State": {
+                "type": ["null", "string"]
+              },
+              "Street": {
+                "type": ["null", "string"]
+              },
+              "ZipCode": {
+                "type": ["null", "string"]
+              },
+              "CountryCode": {
+                "type": ["null", "string"]
+              },
+              "LanguageCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "PhoneNumbers": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "CountryAccessCode": {
+                "type": ["null", "string"]
+              },
+              "Number": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "ExternalReferences": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "SystemCode": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "Attributes": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "StartDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EndDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Company": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": ["null", "integer"]
+        },
+        "Name": {
+          "type": ["null", "string"]
+        },
+        "EmailAddress": {
+          "type": ["null", "string"]
+        },
+        "Comments": {
+          "type": ["null", "string"]
+        },
+        "VatNumber": {
+          "type": ["null", "string"]
+        },
+        "HotelCode": {
+          "type": ["null", "string"]
+        },
+        "Fax": {
+          "type": ["null", "string"]
+        },
+        "CreatedDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastUpdateDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "Addresses": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "City": {
+                "type": ["null", "string"]
+              },
+              "HouseNumber": {
+                "type": ["null", "string"]
+              },
+              "State": {
+                "type": ["null", "string"]
+              },
+              "Street": {
+                "type": ["null", "string"]
+              },
+              "ZipCode": {
+                "type": ["null", "string"]
+              },
+              "CountryCode": {
+                "type": ["null", "string"]
+              },
+              "LanguageCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "PhoneNumbers": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "CountryAccessCode": {
+                "type": ["null", "string"]
+              },
+              "Number": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "ExternalReferences": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "SystemCode": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "Attributes": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "StartDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EndDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "SourceCompany": {
+      "type": ["null", "object"],
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": ["null", "integer"]
+        },
+        "Name": {
+          "type": ["null", "string"]
+        },
+        "EmailAddress": {
+          "type": ["null", "string"]
+        },
+        "Comments": {
+          "type": ["null", "string"]
+        },
+        "VatNumber": {
+          "type": ["null", "string"]
+        },
+        "HotelCode": {
+          "type": ["null", "string"]
+        },
+        "Fax": {
+          "type": ["null", "string"]
+        },
+        "CreatedDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastUpdateDateTime": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "Addresses": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "City": {
+                "type": ["null", "string"]
+              },
+              "HouseNumber": {
+                "type": ["null", "string"]
+              },
+              "State": {
+                "type": ["null", "string"]
+              },
+              "Street": {
+                "type": ["null", "string"]
+              },
+              "ZipCode": {
+                "type": ["null", "string"]
+              },
+              "CountryCode": {
+                "type": ["null", "string"]
+              },
+              "LanguageCode": {
+                "type": ["null", "string"]
+              },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "PhoneNumbers": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "CountryAccessCode": {
+                "type": ["null", "string"]
+              },
+              "Number": {
+                "type": ["null", "string"]
+              },
+              "IsPrimary": { "type": "boolean" },
+              "Source": {
+                "type": ["null", "string"]
+              },
+              "Type": {
+                "type": ["null", "string"]
+              },
+              "CreatedDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "ExternalReferences": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "SystemCode": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "Attributes": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "Id": {
+                "type": ["null", "integer"]
+              },
+              "Code": {
+                "type": ["null", "string"]
+              },
+              "Value": {
+                "type": ["null", "string"]
+              },
+              "TypeCode": {
+                "type": ["null", "string"]
+              },
+              "StartDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EndDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastUpdateDateTime": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
