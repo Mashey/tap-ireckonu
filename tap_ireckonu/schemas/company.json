@@ -1,0 +1,171 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": ["null", "integer"]
+    },
+    "Name": {
+      "type": ["null", "string"]
+    },
+    "EmailAddress": {
+      "type": ["null", "string"]
+    },
+    "Comments": {
+      "type": ["null", "string"]
+    },
+    "VatNumber": {
+      "type": ["null", "string"]
+    },
+    "HotelCode": {
+      "type": ["null", "string"]
+    },
+    "Fax": {
+      "type": ["null", "string"]
+    },
+    "CreatedDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "LastUpdateDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Addresses": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "City": {
+            "type": ["null", "string"]
+          },
+          "HouseNumber": {
+            "type": ["null", "string"]
+          },
+          "State": {
+            "type": ["null", "string"]
+          },
+          "Street": {
+            "type": ["null", "string"]
+          },
+          "ZipCode": {
+            "type": ["null", "string"]
+          },
+          "CountryCode": {
+            "type": ["null", "string"]
+          },
+          "LanguageCode": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "PhoneNumbers": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "CountryAccessCode": {
+            "type": ["null", "string"]
+          },
+          "Number": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "ExternalReferences": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "SystemCode": {
+            "type": ["null", "string"]
+          }
+        }
+      }
+    },
+    "Attributes": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "Code": {
+            "type": ["null", "string"]
+          },
+          "Value": {
+            "type": ["null", "string"]
+          },
+          "TypeCode": {
+            "type": ["null", "string"]
+          },
+          "StartDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "EndDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "CreateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

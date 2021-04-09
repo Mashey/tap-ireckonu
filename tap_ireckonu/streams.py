@@ -1,60 +1,267 @@
 import singer
+from singer import logger
+from datetime import datetime, timedelta
 
 LOGGER = singer.get_logger()
+
+
+def end_date_parse(start_date: str) -> str:
+    return datetime.strftime(
+        (datetime.strptime(start_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
+    )
 
 
 class Stream:
     tap_stream_id = None
     key_properties = []
-    replication_method = ''
+    replication_method = ""
     valid_replication_keys = []
-    replication_key = 'last_updated_at'
-    object_type = ''
-    selected = True
+    replication_key = ""
+    object_type = ""
+    today = datetime.strftime(datetime.today(), "%Y-%m-%d")
 
     def __init__(self, client, state):
         self.client = client
         self.state = state
 
-    def sync(self, *args, **kwargs):
+    def sync_records(self, *args, **kwargs):
         raise NotImplementedError("Sync of child class not implemented")
 
 
 class CatalogStream(Stream):
-    replication_method = 'INCREMENTAL'
+    replication_method = "INCREMENTAL"
 
 
 class FullTableStream(Stream):
-    replication_method = 'FULL_TABLE'
+    replication_method = "FULL_TABLE"
 
 
-class ENDPOINT1Info(FullTableStream):
-    tap_stream_id = 'ENDPOINT1_info'
-    key_properties = ['ENDPOINT1_id']
-    object_type = 'ENDPOINT1_INFO'
+class BulkCompany(CatalogStream):
+    tap_stream_id = "company"
+    key_properties = ["id"]
+    object_type = "company"
+    page = 0
+    page_size = 100
 
-    def sync(self, CLIENT_ARUGMENTS):
+    def sync(self):
         ## This is where to setup iteration over each end point
-        response = self.client.fetch_ENDPOINT1s(ENDPOINT1_PARAMETERS)
-        ENDPOINT1s = response.get('data', {}).get('ENDPOINT1_list', [])
-        for ENDPOINT1 in ENDPOINT1s:
-          yield ENDPOINT1
+        self.client.fetch_access_token()
+        hotel_code_list = singer.get_bookmark(
+            self.state, "MintHouse", "Hotel Codes", []
+        )
+        start_date = singer.get_bookmark(
+            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+        )
+        end_date = end_date_parse(start_date)
+
+        while start_date != self.today:
+            response_length = self.page_size
+            # LOGGER.info(f'Syncing for Date: {start_date}')
+            while response_length >= self.page_size:
+                response = self.client.fetch_bulk_company(
+                    start_date=start_date,
+                    end_date=end_date,
+                    page=self.page,
+                    page_size=self.page_size,
+                )
+
+                response_length = len(response["Data"])
+                companies = response["Data"]
+                for company in companies:
+                    hotel_code_list.append(company["HotelCode"])
+                    yield company
+
+            start_date = end_date
+            end_date = end_date_parse(end_date)
+
+        singer.write_bookmark(
+            self.state,
+            "MintHouse",
+            "Hotel Codes",
+            list(set(filter(lambda x: x != None, hotel_code_list))),
+        )
 
 
-class ENDPOINT2Info(FullTableStream):
-    tap_stream_id = 'ENDPOINT2_info'
-    key_properties = ['ENDPOINT2_id']
-    object_type = 'ENDPOINT2_INFO'
+class BulkPerson(CatalogStream):
+    tap_stream_id = "person"
+    key_properties = ["id"]
+    object_type = "person"
+    page = 0
+    page_size = 100
 
-    def sync(self, CLIENT_ARUGMENTS):
+    def sync(self):
         ## This is where to setup iteration over each end point
-        response = self.client.fetch_ENDPOINT2s(ENDPOINT2_PARAMETERS)
-        ENDPOINT2s = response.get('data', [])
-        for ENDPOINT2 in ENDPOINT2s:
-          yield ENDPOINT2
+        self.client.fetch_access_token()
+        hotel_code_list = singer.get_bookmark(
+            self.state, "MintHouse", "Hotel Codes", []
+        )
+        start_date = singer.get_bookmark(
+            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+        )
+        end_date = end_date_parse(start_date)
+
+        while start_date != self.today:
+            response_length = self.page_size
+            # LOGGER.info(f'Syncing for Date: {start_date}')
+            while response_length >= self.page_size:
+                response = self.client.fetch_bulk_person(
+                    start_date=start_date,
+                    end_date=end_date,
+                    page=self.page,
+                    page_size=self.page_size,
+                )
+
+                response_length = len(response["Data"])
+                persons = response["Data"]
+                for person in persons:
+                    hotel_code_list.append(person["HotelCode"])
+                    yield person
+
+            start_date = end_date
+            end_date = end_date_parse(end_date)
+
+        singer.write_bookmark(
+            self.state,
+            "MintHouse",
+            "Hotel Codes",
+            list(set(filter(lambda x: x != None, hotel_code_list))),
+        )
+
+
+class BulkFolio(CatalogStream):
+    tap_stream_id = "folio"
+    key_properties = ["id"]
+    object_type = "folio"
+    page = 0
+    page_size = 100
+
+    def sync(self):
+        ## This is where to setup iteration over each end point
+        self.client.fetch_access_token()
+        hotel_code_list = singer.get_bookmark(
+            self.state, "MintHouse", "Hotel Codes", []
+        )
+        start_date = singer.get_bookmark(
+            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+        )
+        end_date = end_date_parse(start_date)
+
+        while start_date != self.today:
+            response_length = self.page_size
+            # LOGGER.info(f'Syncing for Date: {start_date}')
+            while response_length >= self.page_size:
+                response = self.client.fetch_bulk_folio(
+                    start_date=start_date,
+                    end_date=end_date,
+                    page=self.page,
+                    page_size=self.page_size,
+                )
+
+                response_length = len(response["Data"])
+                folios = response["Data"]
+                for folio in folios:
+                    hotel_code_list.append(folio["HotelCode"])
+                    yield folio
+
+            start_date = end_date
+            end_date = end_date_parse(end_date)
+
+        singer.write_bookmark(
+            self.state,
+            "MintHouse",
+            "Hotel Codes",
+            list(set(filter(lambda x: x != None, hotel_code_list))),
+        )
+
+
+class BulkReservation(CatalogStream):
+    tap_stream_id = "reservation"
+    key_properties = ["id"]
+    object_type = "reservation"
+    page = 0
+    page_size = 100
+
+    def sync(self):
+        ## This is where to setup iteration over each end point
+        self.client.fetch_access_token()
+        hotel_code_list = singer.get_bookmark(
+            self.state, "MintHouse", "Hotel Codes", []
+        )
+
+        for hotel_code in hotel_code_list:
+            LOGGER.info(f"Starting Reservations for Hotel Code: {hotel_code}")
+            start_date = singer.get_bookmark(
+                self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+            )
+            end_date = end_date_parse(start_date)
+
+            while start_date != self.today:
+                response_length = self.page_size
+                # LOGGER.info(f'Syncing for Date: {start_date}')
+                while response_length >= self.page_size:
+                    response = self.client.fetch_bulk_reservation(
+                        hotel_code=hotel_code,
+                        start_date=start_date,
+                        end_date=end_date,
+                        page=self.page,
+                        page_size=self.page_size,
+                    )
+
+                    response_length = len(response["Data"])
+                    reservations = response["Data"]
+                    for reservation in reservations:
+                        yield reservation
+
+                start_date = end_date
+                end_date = end_date_parse(end_date)
+
+
+class BulkHouseAccount(CatalogStream):
+    tap_stream_id = "house_account"
+    key_properties = ["id"]
+    object_type = "house_account"
+    page = 0
+    page_size = 100
+
+    def sync(self):
+        ## This is where to setup iteration over each end point
+        self.client.fetch_access_token()
+        hotel_code_list = singer.get_bookmark(
+            self.state, "MintHouse", "Hotel Codes", []
+        )
+
+        for hotel_code in hotel_code_list:
+            LOGGER.info(f"Starting House Accounts for Hotel Code: {hotel_code}")
+            start_date = singer.get_bookmark(
+                self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+            )
+            end_date = end_date_parse(start_date)
+
+            while start_date != self.today:
+                response_length = self.page_size
+                # LOGGER.info(f'Syncing for Date: {start_date}')
+                while response_length >= self.page_size:
+                    response = self.client.fetch_bulk_house_account(
+                        hotel_code=hotel_code,
+                        start_date=start_date,
+                        end_date=end_date,
+                        page=self.page,
+                        page_size=self.page_size,
+                    )
+
+                    response_length = len(response["Data"])
+                    house_accounts = response["Data"]
+                    for house_account in house_accounts:
+                        yield house_account
+
+                start_date = end_date
+                end_date = end_date_parse(end_date)
 
 
 STREAMS = {
-    'ENDPOINT1s': ENDPOINT1Info,
-    'ENDPOINT2s': ENDPOINT2Info
+    "company": BulkCompany,
+    "person": BulkPerson,
+    "folio": BulkFolio,
+    "reservation": BulkReservation,
+    "house_account": BulkHouseAccount,
 }

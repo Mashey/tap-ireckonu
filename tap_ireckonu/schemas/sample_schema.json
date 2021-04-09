@@ -14,6 +14,15 @@
     },
     "double_field": {
       "type": ["null", "number"]
-    }
+    },
+    "array_type": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    "boolean": { "type": "boolean" }
   }
 }

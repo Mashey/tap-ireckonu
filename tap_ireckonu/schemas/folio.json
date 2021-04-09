@@ -1,0 +1,150 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "Id": {
+      "type": ["null", "integer"]
+    },
+    "HotelCode": {
+      "type": ["null", "string"]
+    },
+    "ReservationId": {
+      "type": ["null", "integer"]
+    },
+    "Total": {
+      "type": ["null", "number"]
+    },
+    "VatTotal": {
+      "type": ["null", "number"]
+    },
+    "InvoiceNumber": {
+      "type": ["null", "string"]
+    },
+    "AdditionalInvoiceNumber": {
+      "type": ["null", "string"]
+    },
+    "PrimaryPersonId": {
+      "type": ["null", "integer"]
+    },
+    "AgencyId": {
+      "type": ["null", "integer"]
+    },
+    "CompanyId": {
+      "type": ["null", "integer"]
+    },
+    "SourceCompanyId": {
+      "type": ["null", "integer"]
+    },
+    "System": {
+      "type": ["null", "string"]
+    },
+    "Status": {
+      "type": ["null", "string"]
+    },
+    "Addresses": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "Id": {
+            "type": ["null", "integer"]
+          },
+          "City": {
+            "type": ["null", "string"]
+          },
+          "HouseNumber": {
+            "type": ["null", "string"]
+          },
+          "State": {
+            "type": ["null", "string"]
+          },
+          "Street": {
+            "type": ["null", "string"]
+          },
+          "ZipCode": {
+            "type": ["null", "string"]
+          },
+          "CountryCode": {
+            "type": ["null", "string"]
+          },
+          "LanguageCode": {
+            "type": ["null", "string"]
+          },
+          "Source": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "IsPrimary": { "type": "boolean" },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastUpdateDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "Lines": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["object", "null"],
+        "additionalProperties": false,
+        "properties": {
+          "InvoiceLineCode": {
+            "type": ["null", "string"]
+          },
+          "Description": {
+            "type": ["null", "string"]
+          },
+          "Quantity": {
+            "type": ["null", "integer"]
+          },
+          "ArticleGroupCode": {
+            "type": ["null", "string"]
+          },
+          "BillingGroupCode": {
+            "type": ["null", "string"]
+          },
+          "Total": {
+            "type": ["null", "number"]
+          },
+          "VatTotal": {
+            "type": ["null", "number"]
+          },
+          "PostingDate": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "CustomReference": {
+            "type": ["null", "string"]
+          },
+          "CurrencyCode": {
+            "type": ["null", "string"]
+          },
+          "IsDeleted": { "type": "boolean" },
+          "CreatedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LastChangedDateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "CreatedDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "LastChangedDateTime": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}
