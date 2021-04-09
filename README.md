@@ -37,7 +37,7 @@ These are stored in the `config.json` file.
   "CLIENT_SECRET": ""
 }
 ```
-If these keys are missing the tap will fail at run time with a warning of missing required keys.
+If these keys are missing the tap will fail at run time with a warning of missing required keys.  Currently the tap is only setup to authenticate against the acceptance endpoint that is listed in the `client.py` file.
 
 ### Usage
 
