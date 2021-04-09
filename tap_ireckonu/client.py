@@ -11,132 +11,104 @@ class IreckonuClient:
     PERSON_ENDPOINT = "person"
     RESERVATION_ENDPOINT = "reservation"
 
-    def __init__(self, client_id, client_secret):
+    def __init__(self, config):
+        self.config = config
         self._client = requests.Session()
         self._client.headers.update(
             {"Content-Type": "application/json", "Accept": "application/json"}
         )
 
-    def fetch_access_token(self, client_id, api_key):
-        pass
+    def fetch_access_token(self):
+        payload = {
+            'grant_type': 'password',
+            'username': self.config['USERNAME'],
+            'password': self.config['PASSWORD'],
+            'client_id': self.config['CLIENT_ID'],
+            'client_secret': self.config['CLIENT_SECRET'],
+        }
+        token = self._client.get('https://mint-identity-acc.ireckonu.com/oauth2/token', data=payload)
 
-    def fetch_created_bulk_company(
+        self._client.headers.update(
+            {"Authorization": f"Bearer {token.json()['access_token']}"}
+        )
+
+    def fetch_bulk_company(
         self, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.COMPANY_ENPOINT}"
         payload = {
-            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Criteria": self._criteria(start_date, end_date, page, page_size),
             "Filters": self.COMPANY_FILTERS,
         }
-        return self._client.post(url, data=payload).json()
+        payload_json = json.dumps(payload)
+        return self._client.post(url, data=payload_json).json()
 
-    def fetch_updated_bulk_company(
-        self, start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.COMPANY_ENPOINT}"
-        payload = {
-            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
-            "Filters": self.COMPANY_FILTERS,
-        }
-        return self._client.post(url, data=payload).json()
 
-    def fetch_created_bulk_folio(
+    def fetch_bulk_folio(
         self, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.FOLIO_ENDPOINT}"
         payload = {
-            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Criteria": self._criteria(start_date, end_date, page, page_size),
             "Filters": self.FOLIO_FILTERS,
         }
-        return self._client.post(url, data=payload).json()
+        payload_json = json.dumps(payload)
+        return self._client.post(url, data=payload_json).json()
 
-    def fetch_updated_bulk_folio(
+
+    def fetch_bulk_person(
         self, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.FOLIO_ENDPOINT}"
+        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
         payload = {
-            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
-            "Filters": self.FOLIO_FILTERS,
+            "Criteria": self._criteria(start_date, end_date, page, page_size),
+            "Filters": self.PERSON_FILTERS,
         }
-        return self._client.post(url, data=payload).json()
+        payload_json = json.dumps(payload)
+        return self._client.post(url, data=payload_json).json()
 
-    def fetch_created_bulk_house_account(
-        self, start_date: str, end_date: str, page: int, page_size: int
+
+    def fetch_bulk_house_account(
+        self, hotel_code: str, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.HOUSE_ACCOUNT_ENDPOINT}"
         payload = {
-            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
+            "Criteria": self._hotel_code_criteria(hotel_code, start_date, end_date, page, page_size),
             "Filters": self.HOUSE_ACCOUNT_FILTERS,
         }
-        return self._client.post(url, data=payload).json()
+        payload_json = json.dumps(payload)
+        return self._client.post(url, data=payload_json).json()
 
-    def fetch_updated_bulk_house_account(
-        self, start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.HOUSE_ACCOUNT_ENDPOINT}"
-        payload = {
-            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
-            "Filters": self.HOUSE_ACCOUNT_FILTERS,
-        }
-        return self._client.post(url, data=payload).json()
 
-    def fetch_created_bulk_person(
-        self, start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
-        payload = {
-            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
-            "Filters": self.PERSON_FILTERS,
-        }
-        return self._client.post(url, data=payload).json()
-
-    def fetch_updated_bulk_person(
-        self, start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
-        payload = {
-            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
-            "Filters": self.PERSON_FILTERS,
-        }
-        return self._client.post(url, data=payload).json()
-
-    def fetch_created_bulk_reservation(
-        self, start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
-        url = f"{self.BASE_URL}/{self.BULK_API}/{self.PERSON_ENDPOINT}"
-        payload = {
-            "Criteria": self._created_criteria(start_date, end_date, page, page_size),
-            "Filters": self.RESERVATION_FILTERS,
-        }
-        return self._client.post(url, data=payload).json()
-
-    def fetch_updated_bulk_reservation(
-        self, start_date: str, end_date: str, page: int, page_size: int
+    def fetch_bulk_reservation(
+        self, hotel_code: str, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.RESERVATION_ENDPOINT}"
         payload = {
-            "Criteria": self._updated_criteria(start_date, end_date, page, page_size),
+            "Criteria": self._hotel_code_criteria(hotel_code, start_date, end_date, page, page_size),
             "Filters": self.RESERVATION_FILTERS,
         }
-        return self._client.post(url, data=payload).json()
+        payload_json = json.dumps(payload)
+        return self._client.post(url, data=payload_json).json()
 
     @staticmethod
-    def _created_criteria(
+    def _criteria(
         start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         return {
             "Start": start_date,
             "End": end_date,
-            "Type": "Created",
+            "Type": "Updated",
             "Take": page_size,
             "Skip": page * page_size,
         }
 
     @staticmethod
-    def _updated_criteria(
-        start_date: str, end_date: str, page: int, page_size: int
+    def _hotel_code_criteria(
+        hotel_code: str, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         return {
+            "HotelCode": hotel_code,
             "Start": start_date,
             "End": end_date,
             "Type": "Updated",
