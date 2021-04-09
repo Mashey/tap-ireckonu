@@ -20,13 +20,15 @@ class IreckonuClient:
 
     def fetch_access_token(self):
         payload = {
-            'grant_type': 'password',
-            'username': self.config['USERNAME'],
-            'password': self.config['PASSWORD'],
-            'client_id': self.config['CLIENT_ID'],
-            'client_secret': self.config['CLIENT_SECRET'],
+            "grant_type": "password",
+            "username": self.config["USERNAME"],
+            "password": self.config["PASSWORD"],
+            "client_id": self.config["CLIENT_ID"],
+            "client_secret": self.config["CLIENT_SECRET"],
         }
-        token = self._client.get('https://mint-identity-acc.ireckonu.com/oauth2/token', data=payload)
+        token = self._client.get(
+            "https://mint-identity-acc.ireckonu.com/oauth2/token", data=payload
+        )
 
         self._client.headers.update(
             {"Authorization": f"Bearer {token.json()['access_token']}"}
@@ -43,7 +45,6 @@ class IreckonuClient:
         payload_json = json.dumps(payload)
         return self._client.post(url, data=payload_json).json()
 
-
     def fetch_bulk_folio(
         self, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
@@ -54,7 +55,6 @@ class IreckonuClient:
         }
         payload_json = json.dumps(payload)
         return self._client.post(url, data=payload_json).json()
-
 
     def fetch_bulk_person(
         self, start_date: str, end_date: str, page: int, page_size: int
@@ -67,34 +67,34 @@ class IreckonuClient:
         payload_json = json.dumps(payload)
         return self._client.post(url, data=payload_json).json()
 
-
     def fetch_bulk_house_account(
         self, hotel_code: str, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.HOUSE_ACCOUNT_ENDPOINT}"
         payload = {
-            "Criteria": self._hotel_code_criteria(hotel_code, start_date, end_date, page, page_size),
+            "Criteria": self._hotel_code_criteria(
+                hotel_code, start_date, end_date, page, page_size
+            ),
             "Filters": self.HOUSE_ACCOUNT_FILTERS,
         }
         payload_json = json.dumps(payload)
         return self._client.post(url, data=payload_json).json()
-
 
     def fetch_bulk_reservation(
         self, hotel_code: str, start_date: str, end_date: str, page: int, page_size: int
     ) -> dict:
         url = f"{self.BASE_URL}/{self.BULK_API}/{self.RESERVATION_ENDPOINT}"
         payload = {
-            "Criteria": self._hotel_code_criteria(hotel_code, start_date, end_date, page, page_size),
+            "Criteria": self._hotel_code_criteria(
+                hotel_code, start_date, end_date, page, page_size
+            ),
             "Filters": self.RESERVATION_FILTERS,
         }
         payload_json = json.dumps(payload)
         return self._client.post(url, data=payload_json).json()
 
     @staticmethod
-    def _criteria(
-        start_date: str, end_date: str, page: int, page_size: int
-    ) -> dict:
+    def _criteria(start_date: str, end_date: str, page: int, page_size: int) -> dict:
         return {
             "Start": start_date,
             "End": end_date,

@@ -9,11 +9,12 @@ load_dotenv()
 from tap_ireckonu.client import IreckonuClient
 
 config = {
-    "USERNAME": os.getenv('USERNAME'),
-    "PASSWORD": os.getenv('PASSWORD'),
-    "CLIENT_ID": os.getenv('CLIENT_ID'),
-    "CLIENT_SECRET": os.getenv('CLIENT_SECRET')
-    }
+    "USERNAME": os.getenv("USERNAME"),
+    "PASSWORD": os.getenv("PASSWORD"),
+    "CLIENT_ID": os.getenv("CLIENT_ID"),
+    "CLIENT_SECRET": os.getenv("CLIENT_SECRET"),
+}
+
 
 @pytest.fixture()
 def client():
@@ -32,26 +33,23 @@ def test_fetch_bulk_company(client):
 
     while end_date != today:
         response = client.fetch_bulk_company(
-            start_date=start_date,
-            end_date=end_date,
-            page=0,
-            page_size=50
+            start_date=start_date, end_date=end_date, page=0, page_size=50
         )
 
-        assert 'Count' in response
-        assert 'Data' in response
+        assert "Count" in response
+        assert "Data" in response
 
         print(f'{start_date} - Response: {response["Count"]}')
-        if len(response['Data']) > 0:
-            print('Testing Company Data')
-        for company in response['Data']:
+        if len(response["Data"]) > 0:
+            print("Testing Company Data")
+        for company in response["Data"]:
             assert "Id" in company
             assert "Name" in company
             assert "EmailAddress" in company
             assert "Comments" in company
             assert "VatNumber" in company
             assert "HotelCode" in company
-            hotel_codes.append(company['HotelCode'])
+            hotel_codes.append(company["HotelCode"])
             assert "Fax" in company
             assert "CreatedDateTime" in company
             assert "LastUpdateDateTime" in company
@@ -61,11 +59,11 @@ def test_fetch_bulk_company(client):
             assert "Attribues" in company
 
         start_date = end_date
-        end_date = datetime.strftime((datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d")
+        end_date = datetime.strftime(
+            (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
+        )
 
-    print(f'{set(hotel_codes)}')
-
-
+    print(f"{set(hotel_codes)}")
 
 
 def test_fetch_bulk_folio(client):
@@ -78,21 +76,18 @@ def test_fetch_bulk_folio(client):
 
     while end_date != today:
         response = client.fetch_bulk_folio(
-            start_date=start_date,
-            end_date=end_date,
-            page=0,
-            page_size=50
+            start_date=start_date, end_date=end_date, page=0, page_size=50
         )
 
-        assert 'Count' in response
-        assert 'Data' in response
+        assert "Count" in response
+        assert "Data" in response
         print(f'{start_date} - Response: {response["Count"]}')
-        if len(response['Data']) > 0:
-            print('Testing Folio Data')
-        for folio in response['Data']:
+        if len(response["Data"]) > 0:
+            print("Testing Folio Data")
+        for folio in response["Data"]:
             assert "Id" in folio
             assert "HotelCode" in folio
-            hotel_codes.append(folio['HotelCode'])
+            hotel_codes.append(folio["HotelCode"])
             assert "ReservationId" in folio
             assert "Total" in folio
             assert "VatTotal" in folio
@@ -111,11 +106,10 @@ def test_fetch_bulk_folio(client):
 
         start_date = end_date
         end_date = datetime.strftime(
-            (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d")
+            (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
+        )
 
-    print(f'{set(hotel_codes)}')
-
-
+    print(f"{set(hotel_codes)}")
 
 
 def test_fetch_bulk_person(client):
@@ -128,19 +122,16 @@ def test_fetch_bulk_person(client):
 
     while end_date != today:
         response = client.fetch_bulk_person(
-            start_date=start_date,
-            end_date=end_date,
-            page=0,
-            page_size=50
+            start_date=start_date, end_date=end_date, page=0, page_size=50
         )
 
-        assert 'Count' in response
-        assert 'Data' in response
+        assert "Count" in response
+        assert "Data" in response
 
         print(f'{start_date} - Response: {response["Count"]}')
-        if len(response['Data']) > 0:
-            print('Testing Person Data')
-        for person in response['Data']:
+        if len(response["Data"]) > 0:
+            print("Testing Person Data")
+        for person in response["Data"]:
             assert "Id" in person
             assert "Title" in person
             assert "Names" in person
@@ -150,7 +141,7 @@ def test_fetch_bulk_person(client):
             assert "Gender" in person
             assert "DateOfBirth" in person
             assert "HotelCode" in person
-            hotel_codes.append(person['HotelCode'])
+            hotel_codes.append(person["HotelCode"])
             assert "Source" in person
             assert "JobTitle" in person
             assert "IsMember" in person
@@ -174,14 +165,15 @@ def test_fetch_bulk_person(client):
 
         start_date = end_date
         end_date = datetime.strftime(
-            (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d")
+            (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
+        )
 
-    print(f'{set(hotel_codes)}')
+    print(f"{set(hotel_codes)}")
 
 
 def test_fetch_bulk_house_account(client):
 
-    hotel_codes = ['AMS01', 'NYC01']
+    hotel_codes = ["AMS01", "NYC01"]
 
     today = datetime.strftime(datetime.today(), "%Y-%m-%d")
 
@@ -194,16 +186,18 @@ def test_fetch_bulk_house_account(client):
                 start_date=start_date,
                 end_date=end_date,
                 page=0,
-                page_size=50
+                page_size=50,
             )
 
-            assert 'Count' in response
-            assert 'Data' in response
+            assert "Count" in response
+            assert "Data" in response
 
-            print(f'{start_date} - Response: {response["Count"]} - Hotel Code: {hotel_code}')
-            if len(response['Data']) > 0:
-                print('Testing House Account Data')
-            for house_account in response['Data']:
+            print(
+                f'{start_date} - Response: {response["Count"]} - Hotel Code: {hotel_code}'
+            )
+            if len(response["Data"]) > 0:
+                print("Testing House Account Data")
+            for house_account in response["Data"]:
                 assert "Id" in house_account
                 assert "CompanyCode" in house_account
                 assert "MarketCode" in house_account
@@ -221,11 +215,13 @@ def test_fetch_bulk_house_account(client):
 
             start_date = end_date
             end_date = datetime.strftime(
-                (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d")
-    
+                (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)),
+                "%Y-%m-%d",
+            )
+
 
 def test_fetch_bulk_reservation(client):
-    hotel_codes = ['AMS01', 'NYC01']
+    hotel_codes = ["AMS01", "NYC01"]
 
     today = datetime.strftime(datetime.today(), "%Y-%m-%d")
 
@@ -238,17 +234,18 @@ def test_fetch_bulk_reservation(client):
                 start_date=start_date,
                 end_date=end_date,
                 page=0,
-                page_size=50
+                page_size=50,
             )
 
-            assert 'Count' in response
-            assert 'Data' in response
+            assert "Count" in response
+            assert "Data" in response
 
             print(
-                f'{start_date} - Response: {response["Count"]} - Hotel Code: {hotel_code}')
-            if len(response['Data']) > 0:
-                print('Testing Reservation Data')
-            for reservation in response['Data']: 
+                f'{start_date} - Response: {response["Count"]} - Hotel Code: {hotel_code}'
+            )
+            if len(response["Data"]) > 0:
+                print("Testing Reservation Data")
+            for reservation in response["Data"]:
                 assert "Id" in reservation
                 assert "SubReservations" in reservation
                 assert "ArrivalDate" in reservation
@@ -294,4 +291,6 @@ def test_fetch_bulk_reservation(client):
 
             start_date = end_date
             end_date = datetime.strftime(
-                (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d")
+                (datetime.strptime(end_date, "%Y-%m-%d") + timedelta(days=1)),
+                "%Y-%m-%d",
+            )
