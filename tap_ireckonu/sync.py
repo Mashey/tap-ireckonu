@@ -38,8 +38,7 @@ def sync(config, state, catalog):
                 stream.replication_key,
             )
 
-            client = IreckonuClient(config)
-            for record in stream_obj.sync():
+            for record in stream_obj.sync(config['start_date'], config['hotel_codes']):
                 transformed_record = transformer.transform(
                     record, stream_schema, stream_metadata
                 )

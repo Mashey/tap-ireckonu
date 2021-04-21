@@ -330,8 +330,7 @@
               "id"
             ],
             "forced-replication-method": "INCREMENTAL",
-            "inclusion": "available",
-            "selected": true
+            "inclusion": "available"
           }
         },
         {
@@ -1776,8 +1775,7 @@
               "id"
             ],
             "forced-replication-method": "INCREMENTAL",
-            "inclusion": "available",
-            "selected": true
+            "inclusion": "available"
           }
         },
         {
@@ -8395,8 +8393,7 @@
               "id"
             ],
             "forced-replication-method": "INCREMENTAL",
-            "inclusion": "available",
-            "selected": true
+            "inclusion": "available"
           }
         },
         {
@@ -11141,8 +11138,7 @@
               "id"
             ],
             "forced-replication-method": "INCREMENTAL",
-            "inclusion": "available",
-            "selected": true
+            "inclusion": "available"
           }
         },
         {

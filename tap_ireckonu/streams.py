@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 
 LOGGER = singer.get_logger()
 
-
 def end_date_parse(start_date: str) -> str:
     return datetime.strftime(
         (datetime.strptime(start_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
@@ -43,14 +42,11 @@ class BulkCompany(CatalogStream):
     page = 0
     page_size = 100
 
-    def sync(self):
+    def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
-        hotel_code_list = singer.get_bookmark(
-            self.state, "MintHouse", "Hotel Codes", []
-        )
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+            self.state, self.tap_stream_id, self.replication_key, start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -68,18 +64,10 @@ class BulkCompany(CatalogStream):
                 response_length = len(response["Data"])
                 companies = response["Data"]
                 for company in companies:
-                    hotel_code_list.append(company["HotelCode"])
                     yield company
 
             start_date = end_date
             end_date = end_date_parse(end_date)
-
-        singer.write_bookmark(
-            self.state,
-            "MintHouse",
-            "Hotel Codes",
-            list(set(filter(lambda x: x != None, hotel_code_list))),
-        )
 
 
 class BulkPerson(CatalogStream):
@@ -89,14 +77,11 @@ class BulkPerson(CatalogStream):
     page = 0
     page_size = 100
 
-    def sync(self):
+    def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
-        hotel_code_list = singer.get_bookmark(
-            self.state, "MintHouse", "Hotel Codes", []
-        )
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+            self.state, self.tap_stream_id, self.replication_key, start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -114,18 +99,11 @@ class BulkPerson(CatalogStream):
                 response_length = len(response["Data"])
                 persons = response["Data"]
                 for person in persons:
-                    hotel_code_list.append(person["HotelCode"])
                     yield person
 
             start_date = end_date
             end_date = end_date_parse(end_date)
 
-        singer.write_bookmark(
-            self.state,
-            "MintHouse",
-            "Hotel Codes",
-            list(set(filter(lambda x: x != None, hotel_code_list))),
-        )
 
 
 class BulkFolio(CatalogStream):
@@ -135,14 +113,11 @@ class BulkFolio(CatalogStream):
     page = 0
     page_size = 100
 
-    def sync(self):
+    def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
-        hotel_code_list = singer.get_bookmark(
-            self.state, "MintHouse", "Hotel Codes", []
-        )
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+            self.state, self.tap_stream_id, self.replication_key, start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -160,18 +135,11 @@ class BulkFolio(CatalogStream):
                 response_length = len(response["Data"])
                 folios = response["Data"]
                 for folio in folios:
-                    hotel_code_list.append(folio["HotelCode"])
                     yield folio
 
             start_date = end_date
             end_date = end_date_parse(end_date)
 
-        singer.write_bookmark(
-            self.state,
-            "MintHouse",
-            "Hotel Codes",
-            list(set(filter(lambda x: x != None, hotel_code_list))),
-        )
 
 
 class BulkReservation(CatalogStream):
@@ -181,17 +149,14 @@ class BulkReservation(CatalogStream):
     page = 0
     page_size = 100
 
-    def sync(self):
+    def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
-        hotel_code_list = singer.get_bookmark(
-            self.state, "MintHouse", "Hotel Codes", []
-        )
 
-        for hotel_code in hotel_code_list:
+        for hotel_code in hotel_codes:
             LOGGER.info(f"Starting Reservations for Hotel Code: {hotel_code}")
             start_date = singer.get_bookmark(
-                self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+                self.state, self.tap_stream_id, self.replication_key, start_date
             )
             end_date = end_date_parse(start_date)
 
@@ -223,17 +188,14 @@ class BulkHouseAccount(CatalogStream):
     page = 0
     page_size = 100
 
-    def sync(self):
+    def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
-        hotel_code_list = singer.get_bookmark(
-            self.state, "MintHouse", "Hotel Codes", []
-        )
 
-        for hotel_code in hotel_code_list:
+        for hotel_code in hotel_codes:
             LOGGER.info(f"Starting House Accounts for Hotel Code: {hotel_code}")
             start_date = singer.get_bookmark(
-                self.state, self.tap_stream_id, self.replication_key, "2020-10-30"
+                self.state, self.tap_stream_id, self.replication_key, start_date
             )
             end_date = end_date_parse(start_date)
 
