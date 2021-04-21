@@ -3,7 +3,7 @@ import requests
 
 
 class IreckonuClient:
-    BASE_URL = "https://mint-mw-acc.ireckonu.com"
+    BASE_URL = "https://mint-mw-prod.ireckonu.com"
     BULK_API = "bapi/v1"
     COMPANY_ENPOINT = "company"
     FOLIO_ENDPOINT = "folio"
@@ -27,7 +27,7 @@ class IreckonuClient:
             "client_secret": self.config["CLIENT_SECRET"],
         }
         token = self._client.get(
-            "https://mint-identity-acc.ireckonu.com/oauth2/token", data=payload
+            "https://mint-mw-id-prod.ireckonu.com/oauth2/token", data=payload
         )
 
         self._client.headers.update(
