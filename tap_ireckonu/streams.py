@@ -40,8 +40,6 @@ class BulkCompany(CatalogStream):
     tap_stream_id = "company"
     key_properties = ["id"]
     object_type = "company"
-    page = 0
-    page_size = 100
 
     def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
@@ -52,19 +50,21 @@ class BulkCompany(CatalogStream):
         end_date = end_date_parse(start_date)
 
         while start_date != self.today:
-            response_length = self.page_size
+            page = 0
+            page_size = 100
+            response_length = page_size
             # LOGGER.info(f'Syncing for Date: {start_date}')
-            while response_length >= self.page_size:
+            while response_length >= page_size:
                 response = self.client.fetch_bulk_company(
                     start_date=start_date,
                     end_date=end_date,
-                    page=self.page,
-                    page_size=self.page_size,
+                    page=page,
+                    page_size=page_size,
                 )
 
                 response_length = len(response["Data"])
                 companies = response["Data"]
-                self.page += self.page_size
+                page += page_size
                 for company in companies:
                     yield company
 
@@ -76,8 +76,6 @@ class BulkPerson(CatalogStream):
     tap_stream_id = "person"
     key_properties = ["id"]
     object_type = "person"
-    page = 0
-    page_size = 100
 
     def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
@@ -88,19 +86,21 @@ class BulkPerson(CatalogStream):
         end_date = end_date_parse(start_date)
 
         while start_date != self.today:
-            response_length = self.page_size
+            page = 0
+            page_size = 100
+            response_length = page_size
             # LOGGER.info(f'Syncing for Date: {start_date}')
-            while response_length >= self.page_size:
+            while response_length >= page_size:
                 response = self.client.fetch_bulk_person(
                     start_date=start_date,
                     end_date=end_date,
-                    page=self.page,
-                    page_size=self.page_size,
+                    page=page,
+                    page_size=page_size,
                 )
-
+                
                 response_length = len(response["Data"])
                 persons = response["Data"]
-                self.page += self.page_size
+                page += page_size
                 for person in persons:
                     yield person
 
@@ -112,8 +112,6 @@ class BulkFolio(CatalogStream):
     tap_stream_id = "folio"
     key_properties = ["id"]
     object_type = "folio"
-    page = 0
-    page_size = 100
 
     def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
@@ -124,19 +122,21 @@ class BulkFolio(CatalogStream):
         end_date = end_date_parse(start_date)
 
         while start_date != self.today:
-            response_length = self.page_size
+            page = 0
+            page_size = 100
+            response_length = page_size
             # LOGGER.info(f'Syncing for Date: {start_date}')
-            while response_length >= self.page_size:
+            while response_length >= page_size:
                 response = self.client.fetch_bulk_folio(
                     start_date=start_date,
                     end_date=end_date,
-                    page=self.page,
-                    page_size=self.page_size,
+                    page=page,
+                    page_size=page_size,
                 )
 
                 response_length = len(response["Data"])
                 folios = response["Data"]
-                self.page += self.page_size
+                page += page_size
                 for folio in folios:
                     yield folio
 
@@ -148,8 +148,6 @@ class BulkReservation(CatalogStream):
     tap_stream_id = "reservation"
     key_properties = ["id"]
     object_type = "reservation"
-    page = 0
-    page_size = 100
 
     def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
@@ -163,20 +161,22 @@ class BulkReservation(CatalogStream):
             end_date = end_date_parse(start_date)
 
             while start_date != self.today:
-                response_length = self.page_size
+                page = 0
+                page_size = 100
+                response_length = page_size
                 # LOGGER.info(f'Syncing for Date: {start_date}')
-                while response_length >= self.page_size:
+                while response_length >= page_size:
                     response = self.client.fetch_bulk_reservation(
                         hotel_code=hotel_code,
                         start_date=start_date,
                         end_date=end_date,
-                        page=self.page,
-                        page_size=self.page_size,
+                        page=page,
+                        page_size=page_size,
                     )
 
                     response_length = len(response["Data"])
                     reservations = response["Data"]
-                    self.page += self.page_size
+                    page += page_size
                     for reservation in reservations:
                         yield reservation
 
@@ -188,8 +188,6 @@ class BulkHouseAccount(CatalogStream):
     tap_stream_id = "house_account"
     key_properties = ["id"]
     object_type = "house_account"
-    page = 0
-    page_size = 100
 
     def sync(self, start_date, hotel_codes):
         ## This is where to setup iteration over each end point
@@ -203,20 +201,22 @@ class BulkHouseAccount(CatalogStream):
             end_date = end_date_parse(start_date)
 
             while start_date != self.today:
-                response_length = self.page_size
+                page = 0
+                page_size = 100
+                response_length = page_size
                 # LOGGER.info(f'Syncing for Date: {start_date}')
-                while response_length >= self.page_size:
+                while response_length >= page_size:
                     response = self.client.fetch_bulk_house_account(
                         hotel_code=hotel_code,
                         start_date=start_date,
                         end_date=end_date,
-                        page=self.page,
-                        page_size=self.page_size,
+                        page=page,
+                        page_size=page_size,
                     )
 
                     response_length = len(response["Data"])
                     house_accounts = response["Data"]
-                    self.page += self.page_size
+                    page += page_size
                     for house_account in house_accounts:
                         yield house_account
 
