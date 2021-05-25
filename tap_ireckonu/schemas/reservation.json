@@ -3088,46 +3088,6 @@
           }
         }
       }
-    },
-    "Attributes": {
-      "type": ["null", "array"],
-      "items": {
-        "type": ["object", "null"],
-        "additionalProperties": false,
-        "properties": {
-          "Id": {
-            "type": ["null", "integer"]
-          },
-          "Code": {
-            "type": ["null", "string"]
-          },
-          "Value": {
-            "type": ["null", "string"]
-          },
-          "TypeCode": {
-            "type": ["null", "string"]
-          },
-          "StartDate": {
-            "type": ["null", "string"],
-            "format": "date-time"
-          },
-          "EndDate": {
-            "type": ["null", "string"],
-            "format": "date-time"
-          },
-          "CreatedDateTime": {
-            "type": ["null", "string"],
-            "format": "date-time"
-          },
-          "LastUpdateDateTime": {
-            "type": ["null", "string"],
-            "format": "date-time"
-          }
-        }
-      }
-    },
-    "SharerReservationId": {
-      "type": ["null", "integer"]
     }
   }
 }

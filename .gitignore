@@ -100,6 +100,8 @@ config.json
 .autoenv.zsh
 .vscode
 poetry.lock
+output
+catalog.json
 
 rsa-key
 tags

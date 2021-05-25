@@ -9,7 +9,7 @@ load_dotenv()
 from tap_ireckonu.client import IreckonuClient
 
 config = {
-    "USERNAME": 'mashyusr',
+    "USERNAME": "mashyusr",
     "PASSWORD": os.getenv("PASSWORD"),
     "CLIENT_ID": os.getenv("CLIENT_ID"),
     "CLIENT_SECRET": os.getenv("CLIENT_SECRET"),
@@ -173,9 +173,28 @@ def test_fetch_bulk_person(client):
 
 def test_fetch_bulk_house_account(client):
 
-    hotel_codes = ["800TWR", "BLVD", "BUCKLER", "CCAMINN", "CAOBA", "CHESTNUT", "GRAND", "GUTHCOKE", "HENCLAY", "MIDPLACE",
-                   "PHILIP", "RESERVE", "RIVERWALK", "VILLCENTER", "VILLROW", "BRIGGS", "Hatchery", "HighCherry", "SoCo", "Muze"]
-
+    hotel_codes = [
+        "800TWR",
+        "BLVD",
+        "BUCKLER",
+        "CCAMINN",
+        "CAOBA",
+        "CHESTNUT",
+        "GRAND",
+        "GUTHCOKE",
+        "HENCLAY",
+        "MIDPLACE",
+        "PHILIP",
+        "RESERVE",
+        "RIVERWALK",
+        "VILLCENTER",
+        "VILLROW",
+        "BRIGGS",
+        "Hatchery",
+        "HighCherry",
+        "SoCo",
+        "Muze",
+    ]
 
     today = datetime.strftime(datetime.today(), "%Y-%m-%d")
 
@@ -223,7 +242,28 @@ def test_fetch_bulk_house_account(client):
 
 
 def test_fetch_bulk_reservation(client):
-    hotel_codes = ["800TWR", "BLVD", "BUCKLER", "CCAMINN", "CAOBA", "CHESTNUT", "GRAND", "GUTHCOKE", "HENCLAY", "MIDPLACE", "PHILIP", "RESERVE", "RIVERWALK", "VILLCENTER", "VILLROW", "BRIGGS", "Hatchery", "HighCherry", "SoCo", "Muze"]
+    hotel_codes = [
+        "800TWR",
+        "BLVD",
+        "BUCKLER",
+        "CCAMINN",
+        "CAOBA",
+        "CHESTNUT",
+        "GRAND",
+        "GUTHCOKE",
+        "HENCLAY",
+        "MIDPLACE",
+        "PHILIP",
+        "RESERVE",
+        "RIVERWALK",
+        "VILLCENTER",
+        "VILLROW",
+        "BRIGGS",
+        "Hatchery",
+        "HighCherry",
+        "SoCo",
+        "Muze",
+    ]
 
     today = datetime.strftime(datetime.today(), "%Y-%m-%d")
 
