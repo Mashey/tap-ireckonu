@@ -81,7 +81,7 @@ def sync(config, state, catalog):
                 )
 
             except Exception as e:
-                stream_comments.append(f"{tap_stream_id.upper}: {e}")
+                stream_comments.append(f"{tap_stream_id.upper()}: {e}")
                 batch_stop = datetime.now().strftime("%Y-%m-%d, %H:%M:%S")
                 AuditLogs.write_audit_log(
                     run_id=run_id,
