@@ -46,7 +46,7 @@ class BulkCompany(CatalogStream):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, start_date
+            self.state, self.tap_stream_id, "Last Run Date", start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -63,6 +63,7 @@ class BulkCompany(CatalogStream):
 
                 response_length = len(response["Data"])
                 companies = response["Data"]
+                self.page += self.page_size
                 for company in companies:
                     yield company
 
@@ -81,7 +82,7 @@ class BulkPerson(CatalogStream):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, start_date
+            self.state, self.tap_stream_id, "Last Run Date", start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -98,6 +99,7 @@ class BulkPerson(CatalogStream):
 
                 response_length = len(response["Data"])
                 persons = response["Data"]
+                self.page += self.page_size
                 for person in persons:
                     yield person
 
@@ -117,7 +119,7 @@ class BulkFolio(CatalogStream):
         ## This is where to setup iteration over each end point
         self.client.fetch_access_token()
         start_date = singer.get_bookmark(
-            self.state, self.tap_stream_id, self.replication_key, start_date
+            self.state, self.tap_stream_id, "Last Run Date", start_date
         )
         end_date = end_date_parse(start_date)
 
@@ -134,6 +136,7 @@ class BulkFolio(CatalogStream):
 
                 response_length = len(response["Data"])
                 folios = response["Data"]
+                self.page += self.page_size
                 for folio in folios:
                     yield folio
 
@@ -156,7 +159,7 @@ class BulkReservation(CatalogStream):
         for hotel_code in hotel_codes:
             LOGGER.info(f"Starting Reservations for Hotel Code: {hotel_code}")
             start_date = singer.get_bookmark(
-                self.state, self.tap_stream_id, self.replication_key, start_date
+                self.state, self.tap_stream_id, "Last Run Date", start_date
             )
             end_date = end_date_parse(start_date)
 
@@ -174,6 +177,7 @@ class BulkReservation(CatalogStream):
 
                     response_length = len(response["Data"])
                     reservations = response["Data"]
+                    self.page += self.page_size
                     for reservation in reservations:
                         yield reservation
 
@@ -195,7 +199,7 @@ class BulkHouseAccount(CatalogStream):
         for hotel_code in hotel_codes:
             LOGGER.info(f"Starting House Accounts for Hotel Code: {hotel_code}")
             start_date = singer.get_bookmark(
-                self.state, self.tap_stream_id, self.replication_key, start_date
+                self.state, self.tap_stream_id, "Last Run Date", start_date
             )
             end_date = end_date_parse(start_date)
 
@@ -213,6 +217,7 @@ class BulkHouseAccount(CatalogStream):
 
                     response_length = len(response["Data"])
                     house_accounts = response["Data"]
+                    self.page += self.page_size
                     for house_account in house_accounts:
                         yield house_account
 
