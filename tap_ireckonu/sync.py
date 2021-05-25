@@ -47,7 +47,9 @@ def sync(config, state, catalog):
             )
 
             try:
-                for record in stream_obj.sync(config['start_date'], config['hotel_codes']):
+                for record in stream_obj.sync(
+                    config["start_date"], config["hotel_codes"]
+                ):
                     transformed_record = transformer.transform(
                         record, stream_schema, stream_metadata
                     )
@@ -101,5 +103,5 @@ def sync(config, state, catalog):
             start_time=pipeline_start,
             run_time=(time.perf_counter() - pipeline_start_time),
             record_count=total_records,
-            comments='\n'.join(stream_comments),
+            comments="\n".join(stream_comments),
         )

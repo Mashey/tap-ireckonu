@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 
 LOGGER = singer.get_logger()
 
+
 def end_date_parse(start_date: str) -> str:
     return datetime.strftime(
         (datetime.strptime(start_date, "%Y-%m-%d") + timedelta(days=1)), "%Y-%m-%d"
@@ -107,7 +108,6 @@ class BulkPerson(CatalogStream):
             end_date = end_date_parse(end_date)
 
 
-
 class BulkFolio(CatalogStream):
     tap_stream_id = "folio"
     key_properties = ["id"]
@@ -142,7 +142,6 @@ class BulkFolio(CatalogStream):
 
             start_date = end_date
             end_date = end_date_parse(end_date)
-
 
 
 class BulkReservation(CatalogStream):
