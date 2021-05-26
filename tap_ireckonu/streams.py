@@ -155,20 +155,20 @@ class BulkReservation(CatalogStream):
 
         for hotel_code in hotel_codes:
             LOGGER.info(f"Starting Reservations for Hotel Code: {hotel_code}")
-            start_date = singer.get_bookmark(
+            begin_date = singer.get_bookmark(
                 self.state, self.tap_stream_id, "Last Run Date", start_date
             )
-            end_date = end_date_parse(start_date)
+            end_date = end_date_parse(begin_date)
 
-            while start_date != self.today:
+            while begin_date != self.today:
+                LOGGER.info(f'Syncing for Date: {begin_date}')
                 page = 0
                 page_size = 100
                 response_length = page_size
-                # LOGGER.info(f'Syncing for Date: {start_date}')
                 while response_length >= page_size:
                     response = self.client.fetch_bulk_reservation(
                         hotel_code=hotel_code,
-                        start_date=start_date,
+                        start_date=begin_date,
                         end_date=end_date,
                         page=page,
                         page_size=page_size,
@@ -180,7 +180,7 @@ class BulkReservation(CatalogStream):
                     for reservation in reservations:
                         yield reservation
 
-                start_date = end_date
+                begin_date = end_date
                 end_date = end_date_parse(end_date)
 
 
@@ -195,20 +195,20 @@ class BulkHouseAccount(CatalogStream):
 
         for hotel_code in hotel_codes:
             LOGGER.info(f"Starting House Accounts for Hotel Code: {hotel_code}")
-            start_date = singer.get_bookmark(
+            begin_date = singer.get_bookmark(
                 self.state, self.tap_stream_id, "Last Run Date", start_date
             )
-            end_date = end_date_parse(start_date)
+            end_date = end_date_parse(begin_date)
 
-            while start_date != self.today:
+            while begin_date != self.today:
                 page = 0
                 page_size = 100
                 response_length = page_size
-                # LOGGER.info(f'Syncing for Date: {start_date}')
+                # LOGGER.info(f'Syncing for Date: {begin_date}')
                 while response_length >= page_size:
                     response = self.client.fetch_bulk_house_account(
                         hotel_code=hotel_code,
-                        start_date=start_date,
+                        start_date=begin_date,
                         end_date=end_date,
                         page=page,
                         page_size=page_size,
@@ -220,7 +220,7 @@ class BulkHouseAccount(CatalogStream):
                     for house_account in house_accounts:
                         yield house_account
 
-                start_date = end_date
+                begin_date = end_date
                 end_date = end_date_parse(end_date)
 
 
